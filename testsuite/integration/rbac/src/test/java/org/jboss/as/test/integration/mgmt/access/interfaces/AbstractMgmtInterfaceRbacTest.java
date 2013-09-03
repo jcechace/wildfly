@@ -3,9 +3,12 @@ package org.jboss.as.test.integration.mgmt.access.interfaces;
 import org.jboss.as.arquillian.api.ContainerResource;
 import org.jboss.as.arquillian.container.ManagementClient;
 import org.jboss.as.controller.client.ModelControllerClient;
-import static org.jboss.as.controller.descriptions.ModelDescriptionConstants.*;
-import org.jboss.as.test.integration.management.rbac.MgmtClient;
-import org.jboss.as.test.integration.management.rbac.NativeMgmtClient;
+import static org.jboss.as.controller.descriptions.ModelDescriptionConstants.ADD;
+import static org.jboss.as.controller.descriptions.ModelDescriptionConstants.FAILED;
+import static org.jboss.as.controller.descriptions.ModelDescriptionConstants.OUTCOME;
+import static org.jboss.as.controller.descriptions.ModelDescriptionConstants.READ_RESOURCE_OPERATION;
+import static org.jboss.as.controller.descriptions.ModelDescriptionConstants.REMOVE;
+import static org.jboss.as.controller.descriptions.ModelDescriptionConstants.SUCCESS;
 import org.jboss.as.test.integration.management.rbac.Outcome;
 import org.jboss.as.test.integration.management.rbac.RbacUtil;
 import static org.jboss.as.test.integration.management.util.ModelUtil.createOpNode;
@@ -13,8 +16,6 @@ import org.jboss.dmr.ModelNode;
 import org.junit.Assert;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @author jcechace
