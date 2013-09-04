@@ -52,7 +52,7 @@ public class JmxMgmtStandardRolesBasicTestCase extends AbstractMgmtStandardRoles
     @Test @Override
     public void testMonitor() throws Exception {
         MgmtClient client = getClientForUser(MONITOR_USER);
-        whoami(client, MONITOR_USER);
+//        whoami(client, MONITOR_USER);
         checkStandardReads(client);
         readResource(client, MANAGEMENT_REALM, Outcome.HIDDEN);
         checkSensitiveAttribute(client, false);
@@ -65,7 +65,7 @@ public class JmxMgmtStandardRolesBasicTestCase extends AbstractMgmtStandardRoles
     @Test @Override
     public void testOperator() throws Exception {
         MgmtClient client = getClientForUser(OPERATOR_USER);
-        whoami(client, OPERATOR_USER);
+//        whoami(client, OPERATOR_USER);
         checkStandardReads(client);
         readResource(client, MANAGEMENT_REALM, Outcome.HIDDEN);
         checkSensitiveAttribute(client, false);
@@ -78,7 +78,7 @@ public class JmxMgmtStandardRolesBasicTestCase extends AbstractMgmtStandardRoles
     @Test @Override
     public void testMaintainer() throws Exception {
         MgmtClient client = getClientForUser(MAINTAINER_USER);
-        whoami(client, MAINTAINER_USER);
+//        whoami(client, MAINTAINER_USER);
         checkStandardReads(client);
         readResource(client, MANAGEMENT_REALM, Outcome.HIDDEN);
         checkSensitiveAttribute(client, false);
@@ -104,7 +104,7 @@ public class JmxMgmtStandardRolesBasicTestCase extends AbstractMgmtStandardRoles
     @Test @Override
     public void testAdministrator() throws Exception {
         MgmtClient client = getClientForUser(ADMINISTRATOR_USER);
-        whoami(client, ADMINISTRATOR_USER);
+//        whoami(client, ADMINISTRATOR_USER);
         checkStandardReads(client);
         readResource(client, MANAGEMENT_REALM, Outcome.SUCCESS);
         checkSensitiveAttribute(client, true);
@@ -117,7 +117,7 @@ public class JmxMgmtStandardRolesBasicTestCase extends AbstractMgmtStandardRoles
     @Test
     public void testAuditor() throws Exception {
         MgmtClient client = getClientForUser(AUDITOR_USER);
-        whoami(client, AUDITOR_USER);
+//        whoami(client, AUDITOR_USER);
         checkStandardReads(client);
         readResource(client, MANAGEMENT_REALM, Outcome.SUCCESS);
         checkSensitiveAttribute(client, true);
@@ -130,7 +130,7 @@ public class JmxMgmtStandardRolesBasicTestCase extends AbstractMgmtStandardRoles
     @Test
     public void testSuperUser() throws Exception {
         MgmtClient client = getClientForUser(SUPERUSER_USER);
-        whoami(client, SUPERUSER_USER);
+//        whoami(client, SUPERUSER_USER);
         checkStandardReads(client);
         readResource(client, MANAGEMENT_REALM, Outcome.SUCCESS);
         checkSensitiveAttribute(client, true);
