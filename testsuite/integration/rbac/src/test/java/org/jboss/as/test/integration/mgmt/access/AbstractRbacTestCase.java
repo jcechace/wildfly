@@ -31,8 +31,15 @@ import java.util.Map;
 import org.jboss.as.arquillian.api.ContainerResource;
 import org.jboss.as.arquillian.container.ManagementClient;
 import org.jboss.as.controller.client.ModelControllerClient;
+import static org.jboss.as.controller.descriptions.ModelDescriptionConstants.OUTCOME;
+import static org.jboss.as.controller.descriptions.ModelDescriptionConstants.READ_RESOURCE_OPERATION;
+import static org.jboss.as.controller.descriptions.ModelDescriptionConstants.REMOVE;
+import static org.jboss.as.controller.descriptions.ModelDescriptionConstants.SUCCESS;
 import org.jboss.as.test.integration.management.rbac.RbacAdminCallbackHandler;
+import static org.jboss.as.test.integration.management.util.ModelUtil.createOpNode;
+import org.jboss.dmr.ModelNode;
 import org.junit.AfterClass;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Base class for RBAC tests.
@@ -89,4 +96,15 @@ public class AbstractRbacTestCase {
         return managementClient;
     }
 
+    protected void removeResource(String address) throws IOException {
+        ModelNode op = createOpNode(address, READ_RESOURCE_OPERATION);
+        ModelNode result = getManagementClient().getControllerClient().execute(op);
+        if (SUCCESS.equals(result.get(OUTCOME).asString())) {
+            System.out.println("Trying to remove resource:" + address);
+            op = createOpNode(address, REMOVE);
+            result = getManagementClient().getControllerClient().execute(op);
+            assertEquals(result.asString(), SUCCESS, result.get(OUTCOME).asString());
+        }
+
+    }
 }

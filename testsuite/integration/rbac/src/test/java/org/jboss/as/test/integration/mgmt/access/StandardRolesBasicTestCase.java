@@ -237,16 +237,4 @@ public class StandardRolesBasicTestCase extends AbstractRbacTestCase {
         op.get(PATH).set("/");
         RbacUtil.executeOperation(client, op, expectedOutcome);
     }
-
-    private void removeResource(String address) throws IOException {
-        ModelNode op = createOpNode(address, READ_RESOURCE_OPERATION);
-        ModelNode result = getManagementClient().getControllerClient().execute(op);
-        if (SUCCESS.equals(result.get(OUTCOME).asString())) {
-            op = createOpNode(address, REMOVE);
-            result = getManagementClient().getControllerClient().execute(op);
-            assertEquals(result.asString(), SUCCESS, result.get(OUTCOME).asString());
-        }
-
-    }
-
 }
